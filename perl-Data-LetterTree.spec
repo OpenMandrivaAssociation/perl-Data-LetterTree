@@ -1,7 +1,7 @@
 %define module	Data-LetterTree
 %define name	perl-%{module}
 %define version 0.1
-%define release %mkrel 2
+%define release %mkrel 3
 
 Name:		%{name}
 Version:	%{version}
