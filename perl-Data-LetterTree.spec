@@ -13,6 +13,7 @@ Source:		http://search.cpan.org/CPAN/authors/id/G/GR/GROUSSE/%{module}-%{version
 Url:		http://search.cpan.org/dist/%{module}/
 Buildrequires:	perl-devel
 Buildrequires:  liblettertree-devel
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 This module provides perl binding over a native implementation of a letter
