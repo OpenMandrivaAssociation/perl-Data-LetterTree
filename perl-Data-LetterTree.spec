@@ -1,19 +1,20 @@
-%define module	Data-LetterTree
-%define name	perl-%{module}
-%define version 0.1
-%define release %mkrel 7
+%define upstream_name	 Data-LetterTree
+%define upstream_version 0.1
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
 Summary:	Native letter tree Perl binding 
-License:	GPL or Artistic
+License:	GPL+ or Artistic
 Group:		Development/Perl
-Source:		http://search.cpan.org/CPAN/authors/id/G/GR/GROUSSE/%{module}-%{version}.tar.bz2
-Url:		http://search.cpan.org/dist/%{module}/
-Buildrequires:	perl-devel
+Url:		http://search.cpan.org/dist/%{upstream_name}/
+Source0:	http://search.cpan.org/CPAN/authors/id/G/GR/GROUSSE/%{upstream_name}-%{upstream_version}.tar.bz2
+
 Buildrequires:  liblettertree-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+Buildrequires:	perl-devel
+
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 This module provides perl binding over a native implementation of a letter
@@ -22,18 +23,18 @@ string with a reduced memory footprint over native perl hashes by sharing their
 prefixes.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
 %make
 
+%check
+%make test
+
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-%check
-%{__make} test
 
 %clean 
 rm -rf %{buildroot}
@@ -44,4 +45,3 @@ rm -rf %{buildroot}
 %{perl_vendorarch}/Data
 %{perl_vendorarch}/auto/Data
 %{_mandir}/*/*
-
