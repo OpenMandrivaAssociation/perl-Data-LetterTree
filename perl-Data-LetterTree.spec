@@ -1,9 +1,9 @@
 %define upstream_name	 Data-LetterTree
 %define upstream_version 0.1
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:	4
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	5
 
 Summary:	Native letter tree Perl binding 
 License:	GPL+ or Artistic
@@ -11,10 +11,8 @@ Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{upstream_name}/
 Source0:	http://search.cpan.org/CPAN/authors/id/G/GR/GROUSSE/%{upstream_name}-%{upstream_version}.tar.bz2
 
-Buildrequires:  liblettertree-devel
-Buildrequires:	perl-devel
-
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	liblettertree-devel
+BuildRequires:	perl-devel
 
 %description
 This module provides perl binding over a native implementation of a letter
@@ -26,22 +24,18 @@ prefixes.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 %make test
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
-%clean 
-rm -rf %{buildroot}
-
 %files 
-%defattr(-,root,root)
 %doc README Changes
 %{perl_vendorarch}/Data
 %{perl_vendorarch}/auto/Data
 %{_mandir}/*/*
+
