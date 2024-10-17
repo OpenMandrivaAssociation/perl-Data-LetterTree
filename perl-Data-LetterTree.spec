@@ -8,7 +8,7 @@ Release:	7
 Summary:	Native letter tree Perl binding 
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		http://search.cpan.org/dist/%{upstream_name}/
+Url:		https://search.cpan.org/dist/%{upstream_name}/
 Source0:	http://search.cpan.org/CPAN/authors/id/G/GR/GROUSSE/%{upstream_name}-%{upstream_version}.tar.bz2
 
 BuildRequires:	liblettertree-devel
