@@ -1,15 +1,13 @@
 %define upstream_name	 Data-LetterTree
-%define upstream_version 0.1
-
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	7
+Version:	0.1
+Release:	8
 
 Summary:	Native letter tree Perl binding 
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}/
-Source0:	http://search.cpan.org/CPAN/authors/id/G/GR/GROUSSE/%{upstream_name}-%{upstream_version}.tar.bz2
+Url:		https://metacpan.org/dist/%{upstream_name}/
+Source0:	http://search.cpan.org/CPAN/authors/id/G/GR/GROUSSE/%{upstream_name}-%{version}.tar.bz2
 
 BuildRequires:	make
 BuildRequires:	liblettertree-devel
@@ -22,7 +20,7 @@ string with a reduced memory footprint over native perl hashes by sharing their
 prefixes.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
